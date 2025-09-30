@@ -4,6 +4,8 @@
 #include <QLabel>
 #include <QFont>
 
+#include <iostream>
+
 unsigned int ListWidgetItem::size = 0;
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
@@ -12,7 +14,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent)
 
     this->setCentralWidget(central_widget);
     this->setMinimumSize(1600, 1000);
-    this->setWindowTitle("lab04");
+
+    #ifdef __linux__
+    this->setWindowTitle("lab04 by Lnux");
+    #elif defined(__WIN32)
+    this->setWindowTitle("lab04 by Windows");
+    #endif // __linux__
+
 
     buttons_widget = new QWidget(central_widget);
     buttons_widget->setStyleSheet("background-color: grey;");
