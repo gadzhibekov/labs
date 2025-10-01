@@ -12,7 +12,7 @@ ApplicationWindow
     maximumWidth: 1200
     maximumHeight: 770
     visible: true
-    title: "Лаботароная работа 2"
+    title: "Лаботароная работа 1"
     flags: Qt.Tool
 
     property int drag_start_x:  0
@@ -112,7 +112,7 @@ ApplicationWindow
         
         onClicked: 
         {
-            key.text = "Ключ шифрования " + process_helper.get_random_key()
+            key.text = "Ключ шифрования: " + process_helper.get_random_key()
             output.text = ""
             input.text = ""
         }
@@ -121,7 +121,7 @@ ApplicationWindow
     Text
     {
         id: key
-        text: "Ключ шифрования " + process_helper.get_random_key()
+        text: "Ключ шифрования: " + process_helper.get_random_key()
         height: 50
         x: 10
         y: 720
