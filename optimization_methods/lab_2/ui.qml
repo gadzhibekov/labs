@@ -101,6 +101,33 @@ ApplicationWindow
         }
     }
 
+    Button 
+    {
+        id: get_new_random_key_btn
+        width: 200
+        height: 50
+        x: 570
+        y: 710
+        text: "Сгенерировать новый ключ"
+        
+        onClicked: 
+        {
+            key.text = "Ключ шифрования " + process_helper.get_random_key()
+            output.text = ""
+            input.text = ""
+        }
+    }
+    
+    Text
+    {
+        id: key
+        text: "Ключ шифрования " + process_helper.get_random_key()
+        height: 50
+        x: 10
+        y: 720
+        font.pixelSize: 20
+    }
+
     TextEdit 
     {
         id: input

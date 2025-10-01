@@ -5,6 +5,7 @@
 #include <QClipboard>
 
 #include <iostream>
+#include <cstdlib>
 
 Processor::Processor(QObject* parent) : QObject(parent) {}
 
@@ -59,4 +60,13 @@ void Processor::to_clipboard(QString data)
 QString Processor::from_clipboard()
 {
 	return QGuiApplication::clipboard()->text();
+}
+
+QString Processor::get_random_key()
+{   
+    int result = std::rand() % 100 + 1;
+
+    Cryptographer::key = result;
+
+    return QString::number(result);
 }

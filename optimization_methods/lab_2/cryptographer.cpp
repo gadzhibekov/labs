@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+int Cryptographer::key = 0;
+
 double math_function(double x, double k) 
 {
     return sin(x * k) + cos(x / (k + 1)) + tan(x * 0.1);
@@ -17,9 +19,9 @@ std::vector<double> Cryptographer::encrypt(const std::string& text)
         double position = static_cast<double>(i);
         
         double encryptedValue = static_cast<double>(ch);
-        encryptedValue += math_function(position, 2) * 10;
-        encryptedValue *= (1 + sin(2 + position) * 0.5);
-        encryptedValue += log(abs(2 * position + 1)) * 5;
+        encryptedValue += math_function(position, key) * 10;
+        encryptedValue *= (1 + sin(key + position) * 0.5);
+        encryptedValue += log(abs(key * position + 1)) * 5;
         
         encrypted.push_back(encryptedValue);
     }
@@ -36,9 +38,9 @@ std::string Cryptographer::decrypt(const std::vector<double>& encrypted)
         double encryptedValue = encrypted[i];
         double position = static_cast<double>(i);
         
-        encryptedValue -= log(abs(2 * position + 1)) * 5;
-        encryptedValue /= (1 + sin(2 + position) * 0.5);
-        encryptedValue -= math_function(position, 2) * 10;
+        encryptedValue -= log(abs(key * position + 1)) * 5;
+        encryptedValue /= (1 + sin(key + position) * 0.5);
+        encryptedValue -= math_function(position, key) * 10;
         
         char ch = static_cast<char>(round(encryptedValue));
         decrypted += ch;
